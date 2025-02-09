@@ -1,2 +1,2 @@
 # theislamicquora
-https://awsdevopslearner.github.io/theislamicquora/
+https://mddanishdawahofficial.github.io/theislamicquora/
