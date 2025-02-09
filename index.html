@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Islamic Quora</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop id="background-video">
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Content Overlay -->
+<div class="overlay">
+    <!-- Header -->
+    <header>
+        <h1>The Islamic Quora</h1>
+        <p>Get your Islamic questions answered within 24 hours.</p>
+    </header>
+
+    <!-- Search Box -->
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Enter your question...">
+        <button id="search-button" onclick="sendEmail()">Send Now</button>
+    </div>
+</div>
+
+<script>
+    function sendEmail() {
+        const question = document.getElementById("search").value;
+
+        if (!question.trim()) {
+            alert("Please enter a question before sending.");
+            return;
+        }
+
+        // Open the email client with the question pre-filled
+        const email = "emanboost2002@gmail.com"; // Replace with your email
+        const subject = "New Question from Islamic Quora";
+        const body = `Assalamu Alaikum,\n\nI have a question:\n\n${question}\n\nJazakAllah Khair.`;
+        window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+</script>
+
+
+        <!-- Navigation Menu -->
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Al Qur'an</a></li>
+                <li><a href="#">Al Hadith</a></li>
+                <!-- <li><a href="#">Islamic Movies</a></li> -->
+                <li><a href="#">Dua & Sunnat Azkaar</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 The Islamic Quora. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
