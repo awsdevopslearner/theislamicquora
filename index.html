@@ -5,8 +5,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Islamic Quora</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Include Font Awesome for social media icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Background Video */
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        /* Header */
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            display: inline-block;
+            animation: textSlide 3s infinite ease-in-out;
+        }
+
+        /* Railway Style for "Get" Text */
+        .railway-line {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background: linear-gradient(to right, #f1c40f 50%, #000 50%);
+            background-size: 200% auto;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            animation: railway 2s linear infinite;
+        }
+
+        @keyframes railway {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Search Form */
+        .search-container form {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .search-container button {
+            background: #27ae60;
+            color: white;
+            font-size: 1rem;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-container button:hover {
+            background: #219150;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #27ae60;
+        }
+
+        /* Footer */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Social Media Links */
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            margin: 0 15px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #27ae60;
+        }
+
+        .social-links i {
+            margin-right: 8px;
+        }
+    </style>
 </head>
 <body>
+
     <!-- Background Video -->
     <video autoplay muted loop id="background-video">
         <source src="background.mp4" type="video/mp4">
@@ -18,17 +193,18 @@
         <!-- Header -->
         <header>
             <h1>The Islamic Quora</h1>
-            <p>Get your Islamic questions answered within 24 hours.</p>
+            <p class="railway-line">Get your Islamic questions answered within 24 hours.</p>
         </header>
 
-        <!-- Search Box with Automatic Email Submission -->
+        <!-- Search Box -->
         <div class="search-container">
             <form action="https://formsubmit.co/backupmd786@gmail.com" method="POST">
-                <input type="text" name="question" id="search" placeholder="Enter your question..." required>
+                <input type="text" name="name" placeholder="Enter your name..." required>
+                <input type="text" name="location" placeholder="Where are you from?" required>
+                <input type="text" name="question" placeholder="Enter your question..." required>
                 <input type="hidden" name="_subject" value="New Islamic Quora Question">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://mddanishdawahofficial.github.io/theislamicquora/thanks.html"> 
-
+                <input type="hidden" name="_next" value="https://mddanishdawahofficial.github.io/theislamicquora/thanks.html">
                 <button type="submit">Send Now</button>
             </form>
         </div>
@@ -36,18 +212,26 @@
         <!-- Navigation Menu -->
         <nav>
             <ul>
-                <li><a href="https://mddanishdawahofficial.github.io/theislamicquora/">Home</a></li>
-                <li><a href="https://mddanishdawahofficial.github.io/theislamicquora/">Al Qur'an</a></li>
-                <li><a href="https://mddanishdawahofficial.github.io/theislamicquora/">Al Hadith</a></li>
-                <li><a href="https://mddanishdawahofficial.github.io/theislamicquora/">Dua & Sunnat Azkaar</a></li>
-                <li><a href="https://mddanishdawahofficial.github.io/theislamicquora/FAQs.html" target="_blank">FAQs</a></li>
+                <li><a href="https://mddanishdawahofficial.github.io/theislamicquora">Home</a></li>
+                <li><a href="https://mddanishdawahofficial.github.io/theislamicquora">Al Qur'an</a></li>
+                <li><a href="https://mddanishdawahofficial.github.io/theislamicquora">Al Hadith</a></li>
+                <li><a href="https://mddanishdawahofficial.github.io/theislamicquora">Dua & Sunnat Azkaar</a></li>
+                <li><a href="https://mddanishdawahofficial.github.io/theislamicquora/FAQs.html" target="_blank">FAQ</a></li>
             </ul>
         </nav>
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+            <a href="www.youtube.com/@mddanishofficialdawahchannel" target="_blank"><i class="fab fa-youtube"></i>YouTube</a>
+            <a href="instagram.com/eman_boost_2002" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+            <a href="facebook.com/Md-Danish-102119012218411" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
+        </div>
 
         <!-- Footer -->
         <footer>
             <p>&copy; 2025 The Islamic Quora. All Rights Reserved.</p>
         </footer>
     </div>
+
 </body>
 </html>

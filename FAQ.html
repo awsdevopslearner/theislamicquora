@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs | The Islamic Quora</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
+            background-color: #0a3d62;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .faq-container {
+            background: rgba(0, 0, 0, 0.85);
+            color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 1000px;  /* Increased from 800px */
+            width: 95%;        /* Increased from 90% */
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+            margin: 20px auto;
+            position: relative;
+            max-height: 90vh;   /* Increased from 80vh */
+            overflow-y: auto;
+        }
+
+        h1 {
+            font-size: 32px;    /* Increased from 28px */
+            text-align: center;
+            color: #27ae60;
+            margin-bottom: 30px;
+            font-family: 'Verdana', sans-serif;
+            border-bottom: 2px solid #27ae60;
+            padding-bottom: 15px;
+        }
+
+        .faq {
+            margin-bottom: 40px;  /* Added spacing between FAQs */
+        }
+
+        .faq h2 {
+            font-size: 24px;     /* Increased from 20px */
+            color: #27ae60;
+            margin-bottom: 12px;
+        }
+
+        .faq .asker-name {
+            font-size: 18px;     /* Increased from 16px */
+            color: #c7ecee;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .faq p.answer {
+            color: #f1c40f;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 20px;     /* Added font size */
+        }
+
+        .faq .reference {
+            margin-top: 15px;
+            text-align: center;  /* Center align images */
+        }
+
+        .faq .reference img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;  /* Added rounded corners to images */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);  /* Added subtle shadow to images */
+        }
+
+        .back-button {
+            display: block;
+            padding: 15px;
+            background: #27ae60;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background: #219a52;
+        }
+
+        /* Added custom scrollbar styling */
+        .faq-container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .faq-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .faq-container::-webkit-scrollbar-thumb {
+            background: #27ae60;
+            border-radius: 5px;
+        }
+
+        /* Added responsive adjustments */
+        @media (max-width: 768px) {
+            .faq-container {
+                padding: 25px;
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .faq h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video class="video-background" autoplay muted loop>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+
+    <div class="faq-container">
+        <h1>Frequently Asked Questions</h1>
+        
+        <div class="faq">
+            <h2>1. What is the Dua for Before Entering the Toilet?</h2>
+            <p class="asker-name">Asked by: Md Danish</p>
+            <p class="asker-belongs to">Address: Delhi</p>
+            <p class="answer">Answer: Allaahumma 'innee 'a'oothu bika minal-khubthi walkhabaa'ith.</p>
+            <div class="reference">
+                <img src="Before-entering-toilet-dua.jpg" alt="Dua before entering toilet">
+            </div>
+        </div>
+
+        <div class="faq">
+            <h2>2. What is the Dua for After Leaving the Toilet?</h2>
+            <p class="asker-name">Asked by: Md Danish</p>
+            <p class="asker-belongs to">Address: Delhi</p>
+            <p class="answer">Answer: Ghufraanaka.</p>
+            <div class="reference">
+                <img src="After-leaving-the-toilet-da.jpg" alt="Dua after leaving toilet">
+            </div>
+        </div>
+
+        <a href="index.html" class="back-button">Go Back to Home</a>
+    </div>
+</body>
+</html>
