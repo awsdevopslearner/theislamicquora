@@ -9,129 +9,188 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* Previous styles remain the same until nav styles */
+        /* Keep all your original styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .overlay {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            display: inline-block;
+            animation: textSlide 3s infinite ease-in-out;
+        }
+
+        .railway-line {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background: linear-gradient(to right, #f1c40f 50%, #000 50%);
+            background-size: 200% auto;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            animation: railway 2s linear infinite;
+        }
+
+        @keyframes railway {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .search-container form {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .search-container button {
+            background: #27ae60;
+            color: white;
+            font-size: 1rem;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-container button:hover {
+            background: #219150;
+        }
 
         /* Updated Navigation Styles */
         nav {
-            position: fixed;
-            top: 0;
+            position: absolute;
+            top: 20px;
             width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 1rem;
-            z-index: 1000;
+            display: flex;
+            justify-content: center;
         }
 
         nav ul {
             list-style: none;
+            padding: 0;
             display: flex;
-            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
             align-items: center;
-            gap: 2rem;
         }
 
-        .dropdown {
+        nav ul li {
+            margin: 0 15px;
             position: relative;
-            display: inline-block;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             min-width: 200px;
             border-radius: 5px;
             padding: 10px 0;
-            z-index: 1001;
-        }
-
-        .dropdown-content a {
-            color: #fff;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-            transition: 0.3s;
-        }
-
-        .dropdown-content a:hover {
-            background: rgba(39, 174, 96, 0.2);
-            color: #27ae60;
+            z-index: 1;
+            top: 100%;
+            left: 0;
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
         }
 
-        .nav-social-links {
-            display: flex;
-            gap: 1rem;
-            margin-left: 2rem;
+        .dropdown-content a {
+            color: #fff;
+            padding: 8px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
         }
 
-        .nav-social-links a {
+        .dropdown-content a:hover {
+            background: rgba(39, 174, 96, 0.2);
+        }
+
+        nav ul li a {
             color: #fff;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-weight: 600;
             transition: 0.3s;
         }
 
-        .nav-social-links a:hover {
+        nav ul li a:hover {
             color: #27ae60;
         }
 
-        /* Mobile Navigation */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .social-links a {
+            margin: 0 15px;
             color: #fff;
+            text-decoration: none;
             font-size: 1.5rem;
-            cursor: pointer;
+            transition: 0.3s;
         }
 
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(0, 0, 0, 0.9);
-                padding: 1rem;
-            }
-
-            nav ul.show {
-                display: flex;
-            }
-
-            .dropdown-content {
-                position: static;
-                background: none;
-                padding: 0;
-                display: none;
-            }
-
-            .dropdown.active .dropdown-content {
-                display: block;
-            }
-
-            .nav-social-links {
-                margin: 1rem 0;
-                justify-content: center;
-            }
+        .social-links a:hover {
+            color: #27ae60;
         }
 
-        /* Remove the previous social-links class as it's now in the nav */
-        .social-links {
-            display: none;
+        .social-links i {
+            margin-right: 8px;
         }
-
-        /* Rest of the previous styles remain the same */
     </style>
 </head>
 <body>
@@ -140,70 +199,43 @@
         Your browser does not support the video tag.
     </video>
 
-    <nav>
-        <button class="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-        <ul>
-            <li class="dropdown">
-                <a href="#" class="dropbtn">Home</a>
-                <div class="dropdown-content">
-                    <a href="#quran">Al Qur'an</a>
-                    <a href="#hadith">Al Hadith</a>
-                    <a href="#dua">Dua & Sunnat Azkaar</a>
-                    <a href="https://mddanishdawahofficial.github.io/theislamicquora/FAQ.html">FAQ</a>
-                </div>
-            </li>
-            <li class="nav-social-links">
-                <a href="https://www.youtube.com/@mddanishofficialdawahchannel" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.instagram.com/eman_boost_2002" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/Md-Danish-102119012218411" target="_blank"><i class="fab fa-facebook"></i></a>
-            </li>
-        </ul>
-    </nav>
-
     <div class="overlay">
-        <main>
-            <header>
-                <h1>The Islamic Quora</h1>
-                <p class="railway-line">Get your Islamic questions answered within 24 hours.</p>
-            </header>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Home</a>
+                    <div class="dropdown-content">
+                        <a href="#quran">Al Qur'an</a>
+                        <a href="#hadith">Al Hadith</a>
+                        <a href="#dua">Dua & Sunnat Azkaar</a>
+                        <a href="FAQ.html">FAQ</a>
+                    </div>
+                </li>
+                <li><a href="https://www.instagram.com/eman_boost_2002" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.facebook.com/Md-Danish-102119012218411" target="_blank"><i class="fab fa-facebook"></i></a></li>
+            </ul>
+        </nav>
 
-            <div class="search-container">
-                <form action="https://formsubmit.co/backupmd786@gmail.com" method="POST">
-                    <input type="text" name="name" placeholder="Enter your name..." required>
-                    <input type="text" name="location" placeholder="Where are you from?" required>
-                    <input type="text" name="question" placeholder="Enter your question..." required>
-                    <input type="hidden" name="_subject" value="New Islamic Quora Question">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://mddanishdawahofficial.github.io/theislamicquora/thanks.html">
-                    <button type="submit">Send Now</button>
-                </form>
-            </div>
+        <header>
+            <h1>The Islamic Quora</h1>
+            <p class="railway-line">Get your Islamic questions answered within 24 hours.</p>
+        </header>
 
-            <footer>
-                <p>&copy; 2025 The Islamic Quora. All Rights Reserved.</p>
-            </footer>
-        </main>
+        <div class="search-container">
+            <form action="https://formsubmit.co/backupmd786@gmail.com" method="POST">
+                <input type="text" name="name" placeholder="Enter your name..." required>
+                <input type="text" name="location" placeholder="Where are you from?" required>
+                <input type="text" name="question" placeholder="Enter your question..." required>
+                <input type="hidden" name="_subject" value="New Islamic Quora Question">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://mddanishdawahofficial.github.io/theislamicquora/thanks.html">
+                <button type="submit">Send Now</button>
+            </form>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 The Islamic Quora. All Rights Reserved.</p>
+        </footer>
     </div>
-
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navUl = document.querySelector('nav ul');
-        const dropdown = document.querySelector('.dropdown');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            navUl.classList.toggle('show');
-        });
-
-        // Mobile dropdown toggle
-        if (window.innerWidth <= 768) {
-            dropdown.addEventListener('click', (e) => {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
-            });
-        }
-    </script>
 </body>
 </html>
