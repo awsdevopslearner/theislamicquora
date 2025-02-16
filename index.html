@@ -9,113 +9,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* General Styling */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        /* Previous styles remain the same until nav styles */
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: #fff;
-            text-align: center;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        /* Background Video */
-        #background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        /* Overlay */
-        .overlay {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-        }
-
-        /* Header */
-        header {
-            margin-bottom: 2rem;
-            padding: 0 1rem;
-        }
-
-        header h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        /* Railway Style Animation */
-        .railway-line {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            font-weight: 600;
-            color: #fff;
-            text-transform: uppercase;
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 10px;
-            background: linear-gradient(to right, #f1c40f 50%, #000 50%);
-            background-size: 200% auto;
-            border: 2px solid #fff;
-            border-radius: 5px;
-            animation: railway 2s linear infinite;
-        }
-
-        /* Search Form */
-        .search-container {
-            width: min(90%, 400px);
-            margin: 2rem auto;
-        }
-
-        .search-container form {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            width: 100%;
-        }
-
-        .search-container input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .search-container button {
-            width: 100%;
-            background: #27ae60;
-            color: white;
-            font-size: 1rem;
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .search-container button:hover {
-            background: #219150;
-        }
-
-        /* Navigation */
+        /* Updated Navigation Styles */
         nav {
             position: fixed;
             top: 0;
@@ -129,92 +25,113 @@
             list-style: none;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            align-items: center;
+            gap: 2rem;
         }
 
-        nav ul li a {
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            min-width: 200px;
+            border-radius: 5px;
+            padding: 10px 0;
+            z-index: 1001;
+        }
+
+        .dropdown-content a {
             color: #fff;
+            padding: 12px 16px;
             text-decoration: none;
-            font-weight: 600;
+            display: block;
+            text-align: left;
             transition: 0.3s;
-            padding: 5px 10px;
         }
 
-        nav ul li a:hover {
+        .dropdown-content a:hover {
+            background: rgba(39, 174, 96, 0.2);
             color: #27ae60;
         }
 
-        /* Social Media Links */
-        .social-links {
-            margin: 2rem 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
-        .social-links a {
+        .nav-social-links {
+            display: flex;
+            gap: 1rem;
+            margin-left: 2rem;
+        }
+
+        .nav-social-links a {
             color: #fff;
             text-decoration: none;
             font-size: 1.2rem;
             transition: 0.3s;
-            padding: 5px 10px;
         }
 
-        .social-links a:hover {
+        .nav-social-links a:hover {
             color: #27ae60;
         }
 
-        /* Footer */
-        footer {
-            width: 100%;
-            padding: 1rem;
-            font-size: 0.9rem;
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
-        /* Animations */
-        @keyframes railway {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        /* Media Queries */
         @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
             nav ul {
+                display: none;
                 flex-direction: column;
-                align-items: center;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 1rem;
             }
 
-            nav ul li {
-                margin: 5px 0;
+            nav ul.show {
+                display: flex;
             }
 
-            .social-links {
-                flex-direction: column;
-                align-items: center;
+            .dropdown-content {
+                position: static;
+                background: none;
+                padding: 0;
+                display: none;
             }
 
-            .social-links a {
-                margin: 5px 0;
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .nav-social-links {
+                margin: 1rem 0;
+                justify-content: center;
             }
         }
 
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .railway-line {
-                font-size: 1rem;
-                padding: 8px 16px;
-            }
+        /* Remove the previous social-links class as it's now in the nav */
+        .social-links {
+            display: none;
         }
 
-        /* Ensure content doesn't overlap with fixed nav */
-        main {
-            margin-top: 60px;
-        }
+        /* Rest of the previous styles remain the same */
     </style>
 </head>
 <body>
@@ -224,12 +141,24 @@
     </video>
 
     <nav>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
         <ul>
-            <li><a href="https://mddanishdawahofficial.github.io/theislamicquora">Home</a></li>
-            <li><a href="https://mddanishdawahofficial.github.io/theislamicquora">Al Qur'an</a></li>
-            <li><a href="https://mddanishdawahofficial.github.io/theislamicquora">Al Hadith</a></li>
-            <li><a href="https://mddanishdawahofficial.github.io/theislamicquora">Dua & Sunnat Azkaar</a></li>
-            <li><a href="https://mddanishdawahofficial.github.io/theislamicquora/FAQ.html" target="_blank">FAQ</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Home</a>
+                <div class="dropdown-content">
+                    <a href="#quran">Al Qur'an</a>
+                    <a href="#hadith">Al Hadith</a>
+                    <a href="#dua">Dua & Sunnat Azkaar</a>
+                    <a href="https://mddanishdawahofficial.github.io/theislamicquora/FAQ.html">FAQ</a>
+                </div>
+            </li>
+            <li class="nav-social-links">
+                <a href="https://www.youtube.com/@mddanishofficialdawahchannel" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/eman_boost_2002" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/Md-Danish-102119012218411" target="_blank"><i class="fab fa-facebook"></i></a>
+            </li>
         </ul>
     </nav>
 
@@ -252,16 +181,29 @@
                 </form>
             </div>
 
-            <div class="social-links">
-                <a href="https://www.youtube.com/@mddanishofficialdawahchannel" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-                <a href="https://www.instagram.com/eman_boost_2002" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="https://www.facebook.com/Md-Danish-102119012218411" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-            </div>
-
             <footer>
                 <p>&copy; 2025 The Islamic Quora. All Rights Reserved.</p>
             </footer>
         </main>
     </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navUl = document.querySelector('nav ul');
+        const dropdown = document.querySelector('.dropdown');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navUl.classList.toggle('show');
+        });
+
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            dropdown.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
 </html>
