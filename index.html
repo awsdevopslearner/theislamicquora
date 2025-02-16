@@ -11,7 +11,7 @@
         #background-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
         .overlay { position: relative; width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.6); }
         header h1 { font-size: 3rem; font-weight: 600; margin-bottom: 20px; }
-        header p { font-size: 1.2rem; font-weight: 300; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); animation: textSlide 3s infinite ease-in-out; }
+        header p { font-size: 1.2rem; font-weight: 300; margin-top: 10px; }
         .search-container form { background: rgba(255, 255, 255, 0.2); padding: 20px; border-radius: 10px; backdrop-filter: blur(10px); display: flex; flex-direction: column; width: 300px; }
         .search-container input, .search-container button { width: 100%; padding: 10px; margin: 5px 0; border-radius: 5px; font-size: 1rem; }
         .search-container button { background: #27ae60; color: white; cursor: pointer; transition: 0.3s; }
@@ -36,6 +36,7 @@
         <div class="search-container">
             <form action="https://formsubmit.co/backupmd786@gmail.com" method="POST">
                 <input type="text" name="name" placeholder="Enter your name..." required>
+                <input type="email" name="email" placeholder="Enter your email..." required>
                 <input type="text" name="location" placeholder="Where are you from?" required>
                 <input type="text" name="question" placeholder="Enter your question..." required>
                 <input type="hidden" name="_subject" value="New Islamic Quora Question">
